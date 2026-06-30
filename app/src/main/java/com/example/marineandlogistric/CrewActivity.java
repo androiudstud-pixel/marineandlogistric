@@ -21,10 +21,14 @@ public class CrewActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
 
+    int shipId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crew);
+
+        shipId = getIntent().getIntExtra("shipId", -1);
 
         recyclerViewCrew = findViewById(R.id.recyclerViewCrew);
         btnAddCrew = findViewById(R.id.btnAddCrew);
@@ -34,8 +38,11 @@ public class CrewActivity extends AppCompatActivity {
         recyclerViewCrew.setLayoutManager(new LinearLayoutManager(this));
 
         btnAddCrew.setOnClickListener(v -> {
+
             Intent intent = new Intent(CrewActivity.this, AddCrewActivity.class);
+            intent.putExtra("shipId", shipId);
             startActivity(intent);
+
         });
     }
 
@@ -49,14 +56,14 @@ public class CrewActivity extends AppCompatActivity {
 
         crewList = new ArrayList<>();
 
-        Cursor cursor = databaseHelper.getAllCrew();
+        Cursor cursor = databaseHelper.getAllCrew(shipId);
 
         while (cursor.moveToNext()) {
 
-            String name = cursor.getString(1);
-            String rank = cursor.getString(2);
-            String nationality = cursor.getString(3);
-            String passport = cursor.getString(4);
+            String name = cursor.getString(2);
+            String rank = cursor.getString(3);
+            String nationality = cursor.getString(4);
+            String passport = cursor.getString(5);
 
             crewList.add(new Crew(name, rank, nationality, passport));
         }

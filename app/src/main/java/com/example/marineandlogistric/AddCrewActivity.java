@@ -14,16 +14,19 @@ public class AddCrewActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
 
+    int shipId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_crew);
 
+        shipId = getIntent().getIntExtra("shipId", -1);
+
         etCrewName = findViewById(R.id.etCrewName);
         etRank = findViewById(R.id.etRank);
         etNationality = findViewById(R.id.etNationality);
         etPassport = findViewById(R.id.etPassport);
-
         btnSaveCrew = findViewById(R.id.btnSaveCrew);
 
         databaseHelper = new DatabaseHelper(this);
@@ -35,14 +38,14 @@ public class AddCrewActivity extends AppCompatActivity {
             String nationality = etNationality.getText().toString().trim();
             String passport = etPassport.getText().toString().trim();
 
-            if (name.isEmpty() || rank.isEmpty()
-                    || nationality.isEmpty() || passport.isEmpty()) {
+            if (name.isEmpty() || rank.isEmpty() || nationality.isEmpty() || passport.isEmpty()) {
 
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             boolean result = databaseHelper.insertCrew(
+                    shipId,
                     name,
                     rank,
                     nationality,
@@ -50,10 +53,13 @@ public class AddCrewActivity extends AppCompatActivity {
             );
 
             if (result) {
+
                 Toast.makeText(this, "Crew Added Successfully", Toast.LENGTH_SHORT).show();
                 finish();
+
             } else {
-                Toast.makeText(this, "Failed to Save Crew", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(this, "Failed to Add Crew", Toast.LENGTH_SHORT).show();
             }
 
         });

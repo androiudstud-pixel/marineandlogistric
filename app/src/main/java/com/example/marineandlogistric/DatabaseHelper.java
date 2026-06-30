@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "MarineDB.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // ===================== SHIP TABLE =====================
 
@@ -31,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_RANK = "rank";
     public static final String COL_NATIONALITY = "nationality";
     public static final String COL_PASSPORT = "passport";
-
+    public static final String COL_SHIP_ID = "ship_id";
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -51,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Crew Table
         db.execSQL("CREATE TABLE " + TABLE_CREW + "(" +
                 COL_CREW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COL_SHIP_ID + " INTEGER," +
                 COL_CREW_NAME + " TEXT," +
                 COL_RANK + " TEXT," +
                 COL_NATIONALITY + " TEXT," +
@@ -107,7 +108,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // ===================== CREW METHODS =====================
 
-    public boolean insertCrew(String name,
+    public boolean insertCrew(int shipId,
+                              String name,
                               String rank,
                               String nationality,
                               String passport) {
@@ -116,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
+        values.put(COL_SHIP_ID, shipId);
         values.put(COL_CREW_NAME, name);
         values.put(COL_RANK, rank);
         values.put(COL_NATIONALITY, nationality);
@@ -125,11 +128,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return result != -1;
     }
-
-    public Cursor getAllCrew() {
+    public Cursor getAllCrew(int shipId) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        return db.rawQuery("SELECT * FROM " + TABLE_CREW, null);
+        return db.rawQuery(
+                "SELECT * FROM " + TABLE_CREW +
+                        " WHERE " + COL_SHIP_ID + "=?",
+                new String[]{String.valueOf(shipId)});
     }
 }
