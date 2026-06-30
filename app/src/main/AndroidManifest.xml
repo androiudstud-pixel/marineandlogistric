@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -12,21 +11,46 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarineAndLogistric">
 
-        <!-- 1. DashboardActivity ki sahi entry yahan hai -->
-        <activity
-            android:name=".DashboardActivity"
-            android:exported="false" />
-
-        <!-- 2. MainActivity ki entry yahan hai (Ye pehle khulegi) -->
+        <!-- Login Screen -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <!-- Dashboard -->
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+
+        <!-- Ship List -->
+        <activity
+            android:name=".ShipListActivity"
+            android:exported="false" />
+
+        <!-- Add Ship -->
+        <activity
+            android:name=".AddShipActivity"
+            android:exported="false" />
+
+        <!-- Ship Details -->
+        <activity
+            android:name=".ShipDetailsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".CrewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddCrewActivity"
+            android:exported="false" />
 
     </application>
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Crew"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/etCrewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Crew Name"/>
+
+        <EditText
+            android:id="@+id/etRank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rank"/>
+
+        <EditText
+            android:id="@+id/etNationality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nationality"/>
+
+        <EditText
+            android:id="@+id/etPassport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Passport Number"/>
+
+        <Button
+            android:id="@+id/btnSaveCrew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Crew"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

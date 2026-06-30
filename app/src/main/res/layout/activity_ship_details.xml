@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ship Details"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#0D47A1"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/txtShipName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ship Name"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/txtIMO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IMO :"
+            android:textSize="18sp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/txtType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type :"
+            android:textSize="18sp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/txtFlag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flag :"
+            android:textSize="18sp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status :"
+            android:textSize="18sp"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/btnCrew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crew"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btnEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Equipment"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btnCertificates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Certificates"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btnDocuments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Documents"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btnReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reports"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

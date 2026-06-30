@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:background="@drawable/card_background"
+    android:elevation="6dp"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+    <TextView
+        android:id="@+id/tvShipName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🚢 TIME TRADER"
+        android:textColor="@color/primary"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#E0E0E0"/>
+
+    <TextView
+        android:id="@+id/tvIMO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IMO : 9876543"
+        android:textColor="@color/textDark"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Type : Tug Boat"
+        android:textColor="@color/textDark"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvFlag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Flag : India"
+        android:textColor="@color/textDark"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="🟢 Active"
+        android:textColor="@color/success"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
