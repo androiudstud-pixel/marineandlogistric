@@ -63,13 +63,14 @@ public class ShipListActivity extends AppCompatActivity {
 
             do {
 
+                int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String imo = cursor.getString(2);
                 String type = cursor.getString(3);
                 String flag = cursor.getString(4);
                 String status = cursor.getString(5);
 
-                shipList.add(new Ship(name, imo, type, flag, status));
+                shipList.add(new Ship(id, name, imo, type, flag, status));
 
             } while (cursor.moveToNext());
         }

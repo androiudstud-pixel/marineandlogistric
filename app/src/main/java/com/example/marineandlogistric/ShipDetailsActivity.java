@@ -18,6 +18,8 @@ public class ShipDetailsActivity extends AppCompatActivity {
     Button btnDocuments;
     Button btnReports;
 
+    int shipId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,9 @@ public class ShipDetailsActivity extends AppCompatActivity {
         btnDocuments = findViewById(R.id.btnDocuments);
         btnReports = findViewById(R.id.btnReports);
 
+        // Receive Ship ID
+        shipId = getIntent().getIntExtra("shipId", -1);
+
         // Receive Ship Data
         String name = getIntent().getStringExtra("name");
         String imo = getIntent().getStringExtra("imo");
@@ -48,11 +53,16 @@ public class ShipDetailsActivity extends AppCompatActivity {
         txtFlag.setText("Flag : " + flag);
         txtStatus.setText("Status : " + status);
 
-        btnCrew.setOnClickListener(v ->
-        {
+        btnCrew.setOnClickListener(v -> {
 
             Intent intent = new Intent(ShipDetailsActivity.this, CrewActivity.class);
-            startActivity(intent);});
+
+            // Pass Ship ID
+            intent.putExtra("shipId", shipId);
+
+            startActivity(intent);
+
+        });
 
         btnEquipment.setOnClickListener(v ->
                 Toast.makeText(this, "Equipment Module Coming Soon", Toast.LENGTH_SHORT).show());

@@ -40,11 +40,14 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ViewHolder> {
         holder.tvFlag.setText("Flag : " + ship.getFlag());
         holder.tvStatus.setText("Status : " + ship.getStatus());
 
-        // Open Ship Details on Click
         holder.itemView.setOnClickListener(v -> {
 
             Intent intent = new Intent(v.getContext(), ShipDetailsActivity.class);
 
+            // Ship ID (NEW)
+            intent.putExtra("shipId", ship.getId());
+
+            // Ship Details
             intent.putExtra("name", ship.getName());
             intent.putExtra("imo", ship.getImo());
             intent.putExtra("type", ship.getType());
@@ -52,7 +55,6 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ViewHolder> {
             intent.putExtra("status", ship.getStatus());
 
             v.getContext().startActivity(intent);
-
         });
     }
 
