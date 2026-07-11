@@ -64,16 +64,25 @@ public class ShipDetailsActivity extends AppCompatActivity {
 
         });
 
-        btnEquipment.setOnClickListener(v ->
-                Toast.makeText(this, "Equipment Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnEquipment.setOnClickListener(v -> {
+            Intent intent = new Intent(ShipDetailsActivity.this, EquipmentActivity.class);
+            intent.putExtra("shipId", shipId);
+            startActivity(intent);
+        });
 
-        btnCertificates.setOnClickListener(v ->
-                Toast.makeText(this, "Certificates Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnCertificates.setOnClickListener(v -> {
+            Intent intent = new Intent(ShipDetailsActivity.this, CertificatesActivity.class);
+            intent.putExtra("shipId", shipId);
+            startActivity(intent);
+        });
 
         btnDocuments.setOnClickListener(v ->
                 Toast.makeText(this, "Documents Module Coming Soon", Toast.LENGTH_SHORT).show());
 
-        btnReports.setOnClickListener(v ->
-                Toast.makeText(this, "Reports Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnReports.setOnClickListener(v -> {
+            Intent intent = new Intent(ShipDetailsActivity.this, ReportsActivity.class);
+            intent.putExtra("shipId", shipId);
+            startActivity(intent);
+        });
     }
 }

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA">
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,88 +13,136 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ship Details"
-            android:textSize="28sp"
+            android:text="Vessel Overview"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#0D47A1"
-            android:layout_marginBottom="20dp"/>
+            android:textColor="@color/primary"
+            android:layout_marginBottom="16dp"/>
 
-        <TextView
-            android:id="@+id/txtShipName"
+        <!-- Ship Info Card -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ship Name"
+            android:background="@drawable/card_background"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/txtShipName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="@color/onSurface"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginVertical="12dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2">
+
+                <LinearLayout android:orientation="vertical" android:layout_columnWeight="1" android:layout_width="0dp" android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IMO NUMBER" android:textSize="12sp" android:textColor="@color/onSurfaceVariant"/>
+                    <TextView android:id="@+id/txtIMO" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:textSize="16sp" android:textColor="@color/onSurface" android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical" android:layout_columnWeight="1" android:layout_marginBottom="12dp" android:layout_width="0dp" android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VESSEL TYPE" android:textSize="12sp" android:textColor="@color/onSurfaceVariant"/>
+                    <TextView android:id="@+id/txtType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:textSize="16sp" android:textColor="@color/onSurface" android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical" android:layout_columnWeight="1" android:layout_width="0dp" android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FLAG STATE" android:textSize="12sp" android:textColor="@color/onSurfaceVariant"/>
+                    <TextView android:id="@+id/txtFlag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:textSize="16sp" android:textColor="@color/onSurface" android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical" android:layout_columnWeight="1" android:layout_width="0dp" android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CURRENT STATUS" android:textSize="12sp" android:textColor="@color/onSurfaceVariant"/>
+                    <TextView android:id="@+id/txtStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:textSize="16sp" android:textColor="@color/success" android:textStyle="bold"/>
+                </LinearLayout>
+
+            </GridLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Management Sections"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textSize="22sp"
-            android:padding="10dp"/>
+            android:textColor="@color/onSurface"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"/>
 
-        <TextView
-            android:id="@+id/txtIMO"
+        <!-- Action Grid -->
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="IMO :"
-            android:textSize="18sp"
-            android:padding="10dp"/>
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false">
 
-        <TextView
-            android:id="@+id/txtType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Type :"
-            android:textSize="18sp"
-            android:padding="10dp"/>
+            <Button
+                android:id="@+id/btnCrew"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:text="Crew List"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.Material3.Button.TonalButton"/>
 
-        <TextView
-            android:id="@+id/txtFlag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Flag :"
-            android:textSize="18sp"
-            android:padding="10dp"/>
+            <Button
+                android:id="@+id/btnEquipment"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:text="Equipment"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.Material3.Button.TonalButton"/>
 
-        <TextView
-            android:id="@+id/txtStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Status :"
-            android:textSize="18sp"
-            android:padding="10dp"/>
+            <Button
+                android:id="@+id/btnCertificates"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:text="Certificates"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.Material3.Button.TonalButton"/>
 
-        <Button
-            android:id="@+id/btnCrew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Crew"
-            android:layout_marginTop="20dp"/>
+            <Button
+                android:id="@+id/btnReports"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:text="Reports"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.Material3.Button.TonalButton"/>
 
-        <Button
-            android:id="@+id/btnEquipment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Equipment"
-            android:layout_marginTop="10dp"/>
+            <Button
+                android:id="@+id/btnDocuments"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:layout_columnSpan="2"
+                android:text="Documents Archive"
+                android:backgroundTint="@color/onSurfaceVariant"
+                style="@style/Widget.Material3.Button.TonalButton"/>
 
-        <Button
-            android:id="@+id/btnCertificates"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Certificates"
-            android:layout_marginTop="10dp"/>
-
-        <Button
-            android:id="@+id/btnDocuments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Documents"
-            android:layout_marginTop="10dp"/>
-
-        <Button
-            android:id="@+id/btnReports"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reports"
-            android:layout_marginTop="10dp"/>
+        </GridLayout>
 
     </LinearLayout>
-
 </ScrollView>

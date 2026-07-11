@@ -10,19 +10,19 @@
     android:elevation="2dp">
 
     <TextView
-        android:id="@+id/tvCrewName"
+        android:id="@+id/tvEqName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crew Name"
+        android:text="Equipment Name"
         android:textStyle="bold"
         android:textColor="@color/onSurface"
         android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/tvRank"
+        android:id="@+id/tvEqType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rank"
+        android:text="Type"
         android:textColor="@color/primary"
         android:textStyle="bold"
         android:layout_marginTop="4dp"/>
@@ -33,28 +33,12 @@
         android:background="@color/divider"
         android:layout_marginVertical="8dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvEqSerial"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvNationality"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nationality"
-            android:textSize="14sp"
-            android:textColor="@color/onSurfaceVariant"/>
-
-        <TextView
-            android:id="@+id/tvPassport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Passport"
-            android:textSize="14sp"
-            android:textColor="@color/onSurfaceVariant"/>
-
-    </LinearLayout>
+        android:text="Serial Number"
+        android:textSize="14sp"
+        android:textColor="@color/onSurfaceVariant"/>
 
 </LinearLayout>

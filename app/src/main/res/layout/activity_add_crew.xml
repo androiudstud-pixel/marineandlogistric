@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="24dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Crew"
+            android:text="Add New Crew"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
+            android:textColor="@color/primary"
+            android:layout_marginBottom="24dp"/>
 
-        <EditText
-            android:id="@+id/etCrewName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Crew Name"/>
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="20dp">
 
-        <EditText
-            android:id="@+id/etRank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Rank"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Full Name" android:textSize="12sp" android:textColor="@color/onSurfaceVariant" android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/etCrewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter crew name"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/etNationality"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nationality"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rank / Position" android:textSize="12sp" android:textColor="@color/onSurfaceVariant" android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/etRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="e.g. Captain, Chief Engineer"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/etPassport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Passport Number"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nationality" android:textSize="12sp" android:textColor="@color/onSurfaceVariant" android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/etNationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="e.g. Indian, Filipino"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="16dp"/>
 
-        <Button
-            android:id="@+id/btnSaveCrew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save Crew"
-            android:layout_marginTop="20dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Passport Number" android:textSize="12sp" android:textColor="@color/onSurfaceVariant" android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/etPassport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter passport details"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnSaveCrew"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="SAVE CREW MEMBER"
+                android:textStyle="bold"
+                android:backgroundTint="@color/primary"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -52,6 +52,30 @@
             android:name=".AddCrewActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".EquipmentActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddEquipmentActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".CertificatesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddCertificateActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ReportsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddReportActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
