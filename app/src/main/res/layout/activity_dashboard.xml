@@ -1,86 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <LinearLayout
+    <!-- Header Section -->
+    <View
+        android:id="@+id/headerBackground"
         android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@color/primary"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
+        android:text="Marine Management"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Efficiency on the High Seas"
+        android:textColor="#B3FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tvAppTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAppTitle" />
+
+    <!-- Dashboard Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground">
+
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🚢 Marine Management"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"/>
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:padding="16dp"
+            android:rowCount="3">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Manage Ships, Crew &amp; Equipment"
-            android:textSize="16sp"
-            android:textColor="@color/textLight"
-            android:layout_marginBottom="25dp"/>
+            <!-- Ships Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardShips"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-        <Button
-            android:id="@+id/btnShips"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/button_background"
-            android:text="🚢  SHIPS"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+                <LinearLayout
+                    android:id="@+id/btnShips"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-        <Button
-            android:id="@+id/btnCrew"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/button_background"
-            android:text="👨  CREW"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🚢"
+                        android:textSize="40sp" />
 
-        <Button
-            android:id="@+id/btnEquipment"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/button_background"
-            android:text="⚙  EQUIPMENT"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Ships"
+                        android:textColor="@color/onSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnCertificates"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/button_background"
-            android:text="📄  CERTIFICATES"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+            <!-- Crew Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCrew"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-        <Button
-            android:id="@+id/btnReports"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:background="@drawable/button_background"
-            android:text="📊  REPORTS"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+                <LinearLayout
+                    android:id="@+id/btnCrew"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="👨‍✈️"
+                        android:textSize="40sp" />
 
-</ScrollView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Crew"
+                        android:textColor="@color/onSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Equipment Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardEquipment"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/btnEquipment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚙️"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Equipment"
+                        android:textColor="@color/onSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Certificates Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCertificates"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/btnCertificates"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📜"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Certificates"
+                        android:textColor="@color/onSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Reports Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardReports"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/btnReports"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📊"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Reports"
+                        android:textColor="@color/onSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.example.marineandlogistric;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,11 +12,11 @@ public class ShipDetailsActivity extends AppCompatActivity {
 
     TextView txtShipName, txtIMO, txtType, txtFlag, txtStatus;
 
-    Button btnCrew;
-    Button btnEquipment;
-    Button btnCertificates;
-    Button btnDocuments;
-    Button btnReports;
+    View btnCrew;
+    View btnEquipment;
+    View btnCertificates;
+    View btnDocuments;
+    View btnReports;
 
     int shipId;
 

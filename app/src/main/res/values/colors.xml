@@ -13,6 +13,9 @@
     <color name="onSurface">#1E293B</color>
     <color name="onSurfaceVariant">#64748B</color>
 
+    <color name="textLight">#FFFFFF</color>
+    <color name="textDark">#212121</color>
+
     <color name="divider">#E2E8F0</color>
 
     <color name="success">#10B981</color>

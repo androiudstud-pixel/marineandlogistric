@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Marine Logistics"
+            android:text="Create Account"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@color/primary"
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Professional Fleet Management"
+            android:text="Join the Fleet Management System"
             android:textSize="16sp"
             android:textColor="@color/onSurfaceVariant"
             android:layout_marginBottom="40dp"/>
@@ -48,17 +48,8 @@
             android:padding="24dp"
             android:elevation="4dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign In"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/onSurface"
-                android:layout_marginBottom="20dp"/>
-
             <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etRegUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
@@ -68,7 +59,7 @@
                 android:textSize="16sp"/>
 
             <EditText
-                android:id="@+id/etPassword"
+                android:id="@+id/etRegPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -78,11 +69,22 @@
                 android:textColor="@color/onSurface"
                 android:textSize="16sp"/>
 
+            <EditText
+                android:id="@+id/etRegConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:background="@drawable/edit_text_background"
+                android:textColor="@color/onSurface"
+                android:textSize="16sp"/>
+
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="LOGIN"
+                android:text="REGISTER"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/primary"
@@ -92,22 +94,14 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvRegister"
+            android:id="@+id/tvBackToLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? Register here"
+            android:text="Already have an account? Login here"
             android:textColor="@color/primary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:padding="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Version 2.4.0 • 2026"
-            android:textColor="@color/onSurfaceVariant"
-            android:textSize="12sp"
-            android:layout_marginTop="40dp"/>
 
     </LinearLayout>
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
     Button btnLogin;
+    TextView tvRegister;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        tvRegister = findViewById(R.id.tvRegister);
+        db = new DatabaseHelper(this);
 
         btnLogin.setOnClickListener(v -> {
 
@@ -37,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (username.equals("admin") && password.equals("1234")) {
+            boolean isValid = db.checkUser(username, password);
+
+            if (isValid) {
 
                 Toast.makeText(MainActivity.this,
                         "Login Successful",
@@ -55,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        tvRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
 
     }

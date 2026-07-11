@@ -1,10 +1,14 @@
 package com.example.marineandlogistric;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 public class AddCertificateActivity extends AppCompatActivity {
 
@@ -25,6 +29,12 @@ public class AddCertificateActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSaveCertificate);
         db = new DatabaseHelper(this);
 
+        etIssue.setOnClickListener(v -> showDatePicker(etIssue));
+        etIssue.setFocusable(false);
+
+        etExpiry.setOnClickListener(v -> showDatePicker(etExpiry));
+        etExpiry.setFocusable(false);
+
         btnSave.setOnClickListener(v -> {
             String name = etName.getText().toString().trim();
             String issue = etIssue.getText().toString().trim();
@@ -43,5 +53,19 @@ public class AddCertificateActivity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to Add Certificate", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showDatePicker(EditText editText) {
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                (view, year1, monthOfYear, dayOfMonth) -> {
+                    String date = String.format(Locale.getDefault(), "%04d-%02d-%02d", year1, monthOfYear + 1, dayOfMonth);
+                    editText.setText(date);
+                }, year, month, day);
+        datePickerDialog.show();
     }
 }

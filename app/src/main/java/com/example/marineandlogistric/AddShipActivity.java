@@ -60,17 +60,8 @@ public class AddShipActivity extends AppCompatActivity {
         );
 
         if (inserted) {
-
-            Toast.makeText(this,
-                    "Ship Added Successfully",
-                    Toast.LENGTH_SHORT).show();
-
-            etShipName.setText("");
-            etIMO.setText("");
-            etType.setText("");
-            etFlag.setText("");
-            etStatus.setText("");
-
+            Toast.makeText(this, "Ship Added Successfully", Toast.LENGTH_SHORT).show();
+            finish();
         } else {
 
             Toast.makeText(this,

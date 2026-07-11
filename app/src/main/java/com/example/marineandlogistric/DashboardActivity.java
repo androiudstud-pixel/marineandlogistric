@@ -2,18 +2,13 @@ package com.example.marineandlogistric;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    Button btnShips;
-    Button btnCrew;
-    Button btnEquipment;
-    Button btnCertificates;
-    Button btnReports;
+    View btnShips, btnCrew, btnEquipment, btnCertificates, btnReports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +21,34 @@ public class DashboardActivity extends AppCompatActivity {
         btnCertificates = findViewById(R.id.btnCertificates);
         btnReports = findViewById(R.id.btnReports);
 
-        // Open Ship Module
+        // Module Click Listeners
         btnShips.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, ShipListActivity.class);
             startActivity(intent);
         });
 
-        // Coming Soon Modules
-        btnCrew.setOnClickListener(v ->
-                Toast.makeText(this, "Crew Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnCrew.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, CrewActivity.class);
+            intent.putExtra("shipId", -1); // General view
+            startActivity(intent);
+        });
 
-        btnEquipment.setOnClickListener(v ->
-                Toast.makeText(this, "Equipment Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnEquipment.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, EquipmentActivity.class);
+            intent.putExtra("shipId", -1); // General view
+            startActivity(intent);
+        });
 
-        btnCertificates.setOnClickListener(v ->
-                Toast.makeText(this, "Certificates Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnCertificates.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, CertificatesActivity.class);
+            intent.putExtra("shipId", -1); // General view
+            startActivity(intent);
+        });
 
-        btnReports.setOnClickListener(v ->
-                Toast.makeText(this, "Reports Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnReports.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, ReportsActivity.class);
+            intent.putExtra("shipId", -1); // General view
+            startActivity(intent);
+        });
     }
 }
