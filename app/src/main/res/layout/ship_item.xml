@@ -1,64 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="12dp"
-    android:background="@drawable/card_background"
-    android:elevation="6dp"
-    android:orientation="vertical"
-    android:padding="18dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp">
 
-    <TextView
-        android:id="@+id/tvShipName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="🚢 TIME TRADER"
-        android:textColor="@color/primary"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#E0E0E0"/>
-
-    <TextView
-        android:id="@+id/tvIMO"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IMO : 9876543"
-        android:textColor="@color/textDark"
-        android:textSize="16sp"/>
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/tvType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Type : Tug Boat"
-        android:textColor="@color/textDark"
-        android:textSize="16sp"/>
+        <!-- Leading Icon -->
+        <View
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#F0F4F8"/>
 
-    <TextView
-        android:id="@+id/tvFlag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Flag : India"
-        android:textColor="@color/textDark"
-        android:textSize="16sp"/>
+        <TextView
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:text="🚢"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginStart="-56dp"/>
 
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="🟢 Active"
-        android:textColor="@color/success"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        <!-- Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvShipName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ship Name"
+                android:textColor="@color/onSurface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvIMO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IMO: 1234567"
+                android:textColor="@color/onSurfaceVariant"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cargo"
+                    android:textColor="@color/primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="@color/onSurfaceVariant"/>
+
+                <TextView
+                    android:id="@+id/tvFlag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Panama"
+                    android:textColor="@color/onSurfaceVariant"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Status Tag -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#E6FFFA"
+            android:text="ACTIVE"
+            android:textColor="#059669"
+            android:textSize="10sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -3,7 +3,7 @@ package com.example.marineandlogistric;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +19,7 @@ public class ShipListActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
 
-    Button btnAddShip;
+    View btnAddShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

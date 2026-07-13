@@ -3,7 +3,7 @@ package com.example.marineandlogistric;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class CrewActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewCrew;
-    Button btnAddCrew;
+    View btnAddCrew;
 
     ArrayList<Crew> crewList;
     CrewAdapter crewAdapter;

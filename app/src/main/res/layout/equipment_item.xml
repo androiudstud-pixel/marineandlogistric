@@ -1,44 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    android:background="@drawable/card_background"
-    android:elevation="2dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp">
 
-    <TextView
-        android:id="@+id/tvEqName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Equipment Name"
-        android:textStyle="bold"
-        android:textColor="@color/onSurface"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/tvEqType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Type"
-        android:textColor="@color/primary"
-        android:textStyle="bold"
-        android:layout_marginTop="4dp"/>
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
-        android:layout_marginVertical="8dp"/>
-
-    <TextView
-        android:id="@+id/tvEqSerial"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Serial Number"
-        android:textSize="14sp"
-        android:textColor="@color/onSurfaceVariant"/>
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
 
-</LinearLayout>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#FEEBC8"/>
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="⚙️"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginStart="-50dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvEqName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Equipment Name"
+                android:textColor="@color/onSurface"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvEqType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"
+                android:textColor="@color/primary"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvEqSerial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S/N: 12345"
+            android:textColor="@color/onSurfaceVariant"
+            android:textSize="11sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -28,4 +28,9 @@
     <!-- Card Colors -->
     <color name="card_bg">#FFFFFF</color>
     <color name="card_stroke">#E2E8F0</color>
+
+    <!-- Rich UI Gradients -->
+    <color name="gradient_start">#0D47A1</color>
+    <color name="gradient_end">#1976D2</color>
+    <color name="glass_white">#CCFFFFFF</color>
 </resources>

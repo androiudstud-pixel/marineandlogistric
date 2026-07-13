@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DashboardActivity extends AppCompatActivity {
 
     View btnShips, btnCrew, btnEquipment, btnCertificates, btnReports;
+    View btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class DashboardActivity extends AppCompatActivity {
         btnEquipment = findViewById(R.id.btnEquipment);
         btnCertificates = findViewById(R.id.btnCertificates);
         btnReports = findViewById(R.id.btnReports);
+        btnLogout = findViewById(R.id.btnLogout);
 
         // Module Click Listeners
         btnShips.setOnClickListener(v -> {
@@ -49,6 +51,13 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, ReportsActivity.class);
             intent.putExtra("shipId", -1); // General view
             startActivity(intent);
+        });
+
+        btnLogout.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
     }
 }
