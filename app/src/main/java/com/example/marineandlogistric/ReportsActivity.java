@@ -48,10 +48,11 @@ public class ReportsActivity extends AppCompatActivity {
         Cursor cursor = db.getAllReports(shipId);
         if (cursor != null) {
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
                 String title = cursor.getString(2);
                 String date = cursor.getString(3);
                 String content = cursor.getString(4);
-                list.add(new Report(title, date, content));
+                list.add(new Report(id, title, date, content));
             }
             cursor.close();
         }

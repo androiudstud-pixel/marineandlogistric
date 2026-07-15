@@ -48,10 +48,11 @@ public class DocumentsActivity extends AppCompatActivity {
         Cursor cursor = db.getAllDocuments(shipId);
         if (cursor != null) {
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String type = cursor.getString(2);
                 String date = cursor.getString(3);
-                list.add(new Document(name, type, date));
+                list.add(new Document(id, name, type, date));
             }
             cursor.close();
         }

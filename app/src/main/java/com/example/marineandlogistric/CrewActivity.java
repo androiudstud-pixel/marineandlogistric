@@ -59,13 +59,13 @@ public class CrewActivity extends AppCompatActivity {
         Cursor cursor = databaseHelper.getAllCrew(shipId);
 
         while (cursor.moveToNext()) {
-
+            int id = cursor.getInt(0);
             String name = cursor.getString(2);
             String rank = cursor.getString(3);
             String nationality = cursor.getString(4);
             String passport = cursor.getString(5);
 
-            crewList.add(new Crew(name, rank, nationality, passport));
+            crewList.add(new Crew(id, name, rank, nationality, passport));
         }
 
         cursor.close();

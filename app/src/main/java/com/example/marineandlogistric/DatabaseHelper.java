@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "MarineDB.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 11;
 
     // Table: Users
     private static final String TABLE_USERS = "users";
@@ -73,63 +73,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Users Table
-        db.execSQL("CREATE TABLE " + TABLE_USERS + " (" +
-                COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_USERNAME + " TEXT UNIQUE, " +
-                COL_PASSWORD + " TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_USERNAME + " TEXT UNIQUE, " + COL_PASSWORD + " TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_SHIPS + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NAME + " TEXT, " + COL_IMO + " TEXT, " + COL_TYPE + " TEXT, " + COL_FLAG + " TEXT, " + COL_STATUS + " TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_CREW + " (" + COL_CREW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_CREW_NAME + " TEXT, " + COL_RANK + " TEXT, " + COL_NATIONALITY + " TEXT, " + COL_PASSPORT + " TEXT, " + COL_SHIP_ID + " INTEGER)");
+        db.execSQL("CREATE TABLE " + TABLE_EQUIPMENT + " (" + COL_EQ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_EQ_NAME + " TEXT, " + COL_EQ_TYPE + " TEXT, " + COL_EQ_SERIAL + " TEXT, " + COL_EQ_SHIP_ID + " INTEGER)");
+        db.execSQL("CREATE TABLE " + TABLE_CERTIFICATES + " (" + COL_CERT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_CERT_NAME + " TEXT, " + COL_CERT_ISSUE + " TEXT, " + COL_CERT_EXPIRY + " TEXT, " + COL_CERT_SHIP_ID + " INTEGER)");
+        db.execSQL("CREATE TABLE " + TABLE_REPORTS + " (" + COL_REPORT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_REPORT_TITLE + " TEXT, " + COL_REPORT_DATE + " TEXT, " + COL_REPORT_CONTENT + " TEXT, " + COL_REPORT_SHIP_ID + " INTEGER)");
+        db.execSQL("CREATE TABLE " + TABLE_DOCUMENTS + " (" + COL_DOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DOC_NAME + " TEXT, " + COL_DOC_TYPE + " TEXT, " + COL_DOC_DATE + " TEXT, " + COL_DOC_SHIP_ID + " INTEGER)");
 
-        // Ships Table
-        db.execSQL("CREATE TABLE " + TABLE_SHIPS + " (" +
-                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_NAME + " TEXT, " +
-                COL_IMO + " TEXT, " +
-                COL_TYPE + " TEXT, " +
-                COL_FLAG + " TEXT, " +
-                COL_STATUS + " TEXT)");
-
-        // Crew Table
-        db.execSQL("CREATE TABLE " + TABLE_CREW + " (" +
-                COL_CREW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_CREW_NAME + " TEXT, " +
-                COL_RANK + " TEXT, " +
-                COL_NATIONALITY + " TEXT, " +
-                COL_PASSPORT + " TEXT, " +
-                COL_SHIP_ID + " INTEGER)");
-
-        // Equipment Table
-        db.execSQL("CREATE TABLE " + TABLE_EQUIPMENT + " (" +
-                COL_EQ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_EQ_NAME + " TEXT, " +
-                COL_EQ_TYPE + " TEXT, " +
-                COL_EQ_SERIAL + " TEXT, " +
-                COL_EQ_SHIP_ID + " INTEGER)");
-
-        // Certificates Table
-        db.execSQL("CREATE TABLE " + TABLE_CERTIFICATES + " (" +
-                COL_CERT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_CERT_NAME + " TEXT, " +
-                COL_CERT_ISSUE + " TEXT, " +
-                COL_CERT_EXPIRY + " TEXT, " +
-                COL_CERT_SHIP_ID + " INTEGER)");
-
-        // Reports Table
-        db.execSQL("CREATE TABLE " + TABLE_REPORTS + " (" +
-                COL_REPORT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_REPORT_TITLE + " TEXT, " +
-                COL_REPORT_DATE + " TEXT, " +
-                COL_REPORT_CONTENT + " TEXT, " +
-                COL_REPORT_SHIP_ID + " INTEGER)");
-
-        // Documents Table
-        db.execSQL("CREATE TABLE " + TABLE_DOCUMENTS + " (" +
-                COL_DOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_DOC_NAME + " TEXT, " +
-                COL_DOC_TYPE + " TEXT, " +
-                COL_DOC_DATE + " TEXT, " +
-                COL_DOC_SHIP_ID + " INTEGER)");
-
-        // Insert Default Admin
         ContentValues values = new ContentValues();
         values.put(COL_USERNAME, "admin");
         values.put(COL_PASSWORD, "1234");
@@ -139,24 +90,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 5) {
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USERS + " (" +
-                    COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL_USERNAME + " TEXT UNIQUE, " +
-                    COL_PASSWORD + " TEXT)");
-
-            // Add default admin if version was lower
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USERS + " (" + COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_USERNAME + " TEXT UNIQUE, " + COL_PASSWORD + " TEXT)");
             ContentValues values = new ContentValues();
             values.put(COL_USERNAME, "admin");
             values.put(COL_PASSWORD, "1234");
             db.insertWithOnConflict(TABLE_USERS, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         }
-        if (oldVersion < 6) {
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_DOCUMENTS + " (" +
-                    COL_DOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL_DOC_NAME + " TEXT, " +
-                    COL_DOC_TYPE + " TEXT, " +
-                    COL_DOC_DATE + " TEXT, " +
-                    COL_DOC_SHIP_ID + " INTEGER)");
+        if (oldVersion < 11) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_DOCUMENTS + " (" + COL_DOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DOC_NAME + " TEXT, " + COL_DOC_TYPE + " TEXT, " + COL_DOC_DATE + " TEXT, " + COL_DOC_SHIP_ID + " INTEGER)");
         }
     }
 
@@ -167,16 +108,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COL_USERNAME, username);
         values.put(COL_PASSWORD, password);
-        long result = db.insert(TABLE_USERS, null, values);
-        return result != -1;
+        return db.insert(TABLE_USERS, null, values) != -1;
     }
 
     public boolean checkUser(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COL_USER_ID};
-        String selection = COL_USERNAME + " = ?" + " AND " + COL_PASSWORD + " = ?";
-        String[] selectionArgs = {username, password};
-        Cursor cursor = db.query(TABLE_USERS, columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(TABLE_USERS, new String[]{COL_USER_ID}, COL_USERNAME + "=? AND " + COL_PASSWORD + "=?", new String[]{username, password}, null, null, null);
         int count = cursor.getCount();
         cursor.close();
         return count > 0;
@@ -192,18 +129,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_TYPE, type);
         values.put(COL_FLAG, flag);
         values.put(COL_STATUS, status);
-        long result = db.insert(TABLE_SHIPS, null, values);
-        return result != -1;
+        return db.insert(TABLE_SHIPS, null, values) != -1;
     }
 
     public Cursor getAllShips() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_SHIPS, null);
+        return this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE_SHIPS, null);
     }
 
     public boolean deleteShip(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_SHIPS, COL_ID + "=?", new String[]{String.valueOf(id)}) > 0;
+        return this.getWritableDatabase().delete(TABLE_SHIPS, COL_ID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
 
     // ===================== CREW METHODS =====================
@@ -216,16 +150,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_RANK, rank);
         values.put(COL_NATIONALITY, nationality);
         values.put(COL_PASSPORT, passport);
-        long result = db.insert(TABLE_CREW, null, values);
-        return result != -1;
+        return db.insert(TABLE_CREW, null, values) != -1;
     }
 
     public Cursor getAllCrew(int shipId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        if (shipId == -1) {
-            return db.rawQuery("SELECT * FROM " + TABLE_CREW, null);
-        }
+        if (shipId == -1) return db.rawQuery("SELECT * FROM " + TABLE_CREW, null);
         return db.rawQuery("SELECT * FROM " + TABLE_CREW + " WHERE " + COL_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
+    }
+
+    public boolean deleteCrew(int id) {
+        return this.getWritableDatabase().delete(TABLE_CREW, COL_CREW_ID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
 
     // ===================== EQUIPMENT METHODS =====================
@@ -237,16 +172,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_EQ_NAME, name);
         values.put(COL_EQ_TYPE, type);
         values.put(COL_EQ_SERIAL, serial);
-        long result = db.insert(TABLE_EQUIPMENT, null, values);
-        return result != -1;
+        return db.insert(TABLE_EQUIPMENT, null, values) != -1;
     }
 
     public Cursor getAllEquipment(int shipId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        if (shipId == -1) {
-            return db.rawQuery("SELECT * FROM " + TABLE_EQUIPMENT, null);
-        }
+        if (shipId == -1) return db.rawQuery("SELECT * FROM " + TABLE_EQUIPMENT, null);
         return db.rawQuery("SELECT * FROM " + TABLE_EQUIPMENT + " WHERE " + COL_EQ_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
+    }
+
+    public boolean deleteEquipment(int id) {
+        return this.getWritableDatabase().delete(TABLE_EQUIPMENT, COL_EQ_ID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
 
     // ===================== CERTIFICATE METHODS =====================
@@ -258,16 +194,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_CERT_NAME, name);
         values.put(COL_CERT_ISSUE, issue);
         values.put(COL_CERT_EXPIRY, expiry);
-        long result = db.insert(TABLE_CERTIFICATES, null, values);
-        return result != -1;
+        return db.insert(TABLE_CERTIFICATES, null, values) != -1;
     }
 
     public Cursor getAllCertificates(int shipId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        if (shipId == -1) {
-            return db.rawQuery("SELECT * FROM " + TABLE_CERTIFICATES, null);
-        }
+        if (shipId == -1) return db.rawQuery("SELECT * FROM " + TABLE_CERTIFICATES, null);
         return db.rawQuery("SELECT * FROM " + TABLE_CERTIFICATES + " WHERE " + COL_CERT_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
+    }
+
+    public boolean deleteCertificate(int id) {
+        return this.getWritableDatabase().delete(TABLE_CERTIFICATES, COL_CERT_ID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
 
     // ===================== REPORT METHODS =====================
@@ -279,16 +216,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_REPORT_TITLE, title);
         values.put(COL_REPORT_DATE, date);
         values.put(COL_REPORT_CONTENT, content);
-        long result = db.insert(TABLE_REPORTS, null, values);
-        return result != -1;
+        return db.insert(TABLE_REPORTS, null, values) != -1;
     }
 
     public Cursor getAllReports(int shipId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        if (shipId == -1) {
-            return db.rawQuery("SELECT * FROM " + TABLE_REPORTS, null);
-        }
+        if (shipId == -1) return db.rawQuery("SELECT * FROM " + TABLE_REPORTS, null);
         return db.rawQuery("SELECT * FROM " + TABLE_REPORTS + " WHERE " + COL_REPORT_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
+    }
+
+    public boolean deleteReport(int id) {
+        return this.getWritableDatabase().delete(TABLE_REPORTS, COL_REPORT_ID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
 
     // ===================== DOCUMENT METHODS =====================
@@ -300,15 +238,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_DOC_NAME, name);
         values.put(COL_DOC_TYPE, type);
         values.put(COL_DOC_DATE, date);
-        long result = db.insert(TABLE_DOCUMENTS, null, values);
-        return result != -1;
+        return db.insert(TABLE_DOCUMENTS, null, values) != -1;
     }
 
     public Cursor getAllDocuments(int shipId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        if (shipId == -1) {
-            return db.rawQuery("SELECT * FROM " + TABLE_DOCUMENTS, null);
-        }
+        if (shipId == -1) return db.rawQuery("SELECT * FROM " + TABLE_DOCUMENTS, null);
         return db.rawQuery("SELECT * FROM " + TABLE_DOCUMENTS + " WHERE " + COL_DOC_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
+    }
+
+    public boolean deleteDocument(int id) {
+        return this.getWritableDatabase().delete(TABLE_DOCUMENTS, COL_DOC_ID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
 }

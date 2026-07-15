@@ -48,10 +48,11 @@ public class CertificatesActivity extends AppCompatActivity {
         Cursor cursor = db.getAllCertificates(shipId);
         if (cursor != null) {
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
                 String name = cursor.getString(2);
                 String issue = cursor.getString(3);
                 String expiry = cursor.getString(4);
-                list.add(new Certificate(name, issue, expiry));
+                list.add(new Certificate(id, name, issue, expiry));
             }
             cursor.close();
         }

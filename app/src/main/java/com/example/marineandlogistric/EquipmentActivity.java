@@ -48,10 +48,11 @@ public class EquipmentActivity extends AppCompatActivity {
         Cursor cursor = db.getAllEquipment(shipId);
         if (cursor != null) {
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
                 String name = cursor.getString(2);
                 String type = cursor.getString(3);
                 String serial = cursor.getString(4);
-                equipmentList.add(new Equipment(name, type, serial));
+                equipmentList.add(new Equipment(id, name, type, serial));
             }
             cursor.close();
         }
