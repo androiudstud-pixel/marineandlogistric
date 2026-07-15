@@ -76,8 +76,11 @@ public class ShipDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        btnDocuments.setOnClickListener(v ->
-                Toast.makeText(this, "Documents Module Coming Soon", Toast.LENGTH_SHORT).show());
+        btnDocuments.setOnClickListener(v -> {
+            Intent intent = new Intent(ShipDetailsActivity.this, DocumentsActivity.class);
+            intent.putExtra("shipId", shipId);
+            startActivity(intent);
+        });
 
         btnReports.setOnClickListener(v -> {
             Intent intent = new Intent(ShipDetailsActivity.this, ReportsActivity.class);

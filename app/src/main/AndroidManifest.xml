@@ -79,6 +79,14 @@
             android:name=".AddReportActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".DocumentsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddDocumentActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

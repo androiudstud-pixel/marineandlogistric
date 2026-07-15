@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    View btnShips, btnCrew, btnEquipment, btnCertificates, btnReports;
+    View btnShips, btnCrew, btnEquipment, btnCertificates, btnReports, btnDocuments;
     View btnLogout;
 
     @Override
@@ -21,6 +21,7 @@ public class DashboardActivity extends AppCompatActivity {
         btnEquipment = findViewById(R.id.btnEquipment);
         btnCertificates = findViewById(R.id.btnCertificates);
         btnReports = findViewById(R.id.btnReports);
+        btnDocuments = findViewById(R.id.btnDocuments);
         btnLogout = findViewById(R.id.btnLogout);
 
         // Module Click Listeners
@@ -49,6 +50,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         btnReports.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, ReportsActivity.class);
+            intent.putExtra("shipId", -1); // General view
+            startActivity(intent);
+        });
+
+        btnDocuments.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, DocumentsActivity.class);
             intent.putExtra("shipId", -1); // General view
             startActivity(intent);
         });

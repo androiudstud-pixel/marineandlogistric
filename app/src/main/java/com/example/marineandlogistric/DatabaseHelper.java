@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "MarineDB.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     // Table: Users
     private static final String TABLE_USERS = "users";
@@ -58,6 +58,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_REPORT_DATE = "report_date";
     private static final String COL_REPORT_CONTENT = "report_content";
     private static final String COL_REPORT_SHIP_ID = "report_ship_id";
+
+    // Table: Documents
+    private static final String TABLE_DOCUMENTS = "documents";
+    private static final String COL_DOC_ID = "doc_id";
+    private static final String COL_DOC_NAME = "doc_name";
+    private static final String COL_DOC_TYPE = "doc_type";
+    private static final String COL_DOC_DATE = "doc_date";
+    private static final String COL_DOC_SHIP_ID = "doc_ship_id";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -113,6 +121,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_REPORT_CONTENT + " TEXT, " +
                 COL_REPORT_SHIP_ID + " INTEGER)");
 
+        // Documents Table
+        db.execSQL("CREATE TABLE " + TABLE_DOCUMENTS + " (" +
+                COL_DOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_DOC_NAME + " TEXT, " +
+                COL_DOC_TYPE + " TEXT, " +
+                COL_DOC_DATE + " TEXT, " +
+                COL_DOC_SHIP_ID + " INTEGER)");
+
         // Insert Default Admin
         ContentValues values = new ContentValues();
         values.put(COL_USERNAME, "admin");
@@ -133,6 +149,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(COL_USERNAME, "admin");
             values.put(COL_PASSWORD, "1234");
             db.insertWithOnConflict(TABLE_USERS, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        }
+        if (oldVersion < 6) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_DOCUMENTS + " (" +
+                    COL_DOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL_DOC_NAME + " TEXT, " +
+                    COL_DOC_TYPE + " TEXT, " +
+                    COL_DOC_DATE + " TEXT, " +
+                    COL_DOC_SHIP_ID + " INTEGER)");
         }
     }
 
@@ -265,5 +289,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return db.rawQuery("SELECT * FROM " + TABLE_REPORTS, null);
         }
         return db.rawQuery("SELECT * FROM " + TABLE_REPORTS + " WHERE " + COL_REPORT_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
+    }
+
+    // ===================== DOCUMENT METHODS =====================
+
+    public boolean insertDocument(int shipId, String name, String type, String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_DOC_SHIP_ID, shipId);
+        values.put(COL_DOC_NAME, name);
+        values.put(COL_DOC_TYPE, type);
+        values.put(COL_DOC_DATE, date);
+        long result = db.insert(TABLE_DOCUMENTS, null, values);
+        return result != -1;
+    }
+
+    public Cursor getAllDocuments(int shipId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (shipId == -1) {
+            return db.rawQuery("SELECT * FROM " + TABLE_DOCUMENTS, null);
+        }
+        return db.rawQuery("SELECT * FROM " + TABLE_DOCUMENTS + " WHERE " + COL_DOC_SHIP_ID + "=?", new String[]{String.valueOf(shipId)});
     }
 }
